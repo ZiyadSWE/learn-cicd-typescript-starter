@@ -50,6 +50,3 @@ jobs:
 
       - name: Check Linting
         run: npm run lint
-
-      - name: Format Code
-        run: npm run format:write
