@@ -18,8 +18,35 @@ jobs:
         with:
           node-version: 22
 
+      - name: Set up npm
+        run: npm install --global npm@11.16.0
+
       - name: Install dependencies
         run: npm ci
 
       - name: Run tests
         run: npm run test -- --coverage
+  style:
+    name: style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Set up npm
+        run: npm install --global npm@11.16.0
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Format
+        run: npm run format:check
+
+      - name: Check Linting
+        run: npm run lint -- --max-warnings=0

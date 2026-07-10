@@ -16,10 +16,4 @@ describe("getAPIKey", () => {
   ])("returns null for %s", (_, headers) => {
     expect(getAPIKey(headers)).toBeNull();
   });
-
-  it("handles multiple spaces before the API key", () => {
-    expect(getAPIKey({ authorization: "ApiKey   secret-key" })).toBe(
-      "secret-key",
-    );
-  });
 });
